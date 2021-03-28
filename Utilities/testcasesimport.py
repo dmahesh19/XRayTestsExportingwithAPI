@@ -10,7 +10,7 @@ tokenUrl = "https://xray.cloud.xpand-it.com/api/v2/authenticate"
 
 featureUrl = "https://xray.cloud.xpand-it.com/api/v2/export/cucumber?keys=GF-11"
 
-file = open("..\creds.json",'r')
+file = open("..\\creds.json",'r')
 json_input = file.read()
 #req_json = json.loads(json_input)
 
@@ -32,10 +32,10 @@ reponse1 = requests.get(featureUrl,headers=featureHeaderList)
 
 #print(reponse1.content)
 
-with open("..\downloads\d.zip","wb") as f:
+with open("..\\downloads\\d.zip","wb") as f:
     f.write(reponse1.content)
 
-with ZipFile("..\downloads\d.zip",'r') as zip:
+with ZipFile("..\\downloads\\d.zip",'r') as zip:
     zip.extractall("..\\features")
 
 
