@@ -23,8 +23,10 @@ pipeline {
       steps {
         script {
           echo 'Stage 2'
-          behave //-f allure_behave.formatter:AllureFormatter -o reports
-          allure serve reports
+		  bat '''
+			behave -f allure_behave.formatter:AllureFormatter -o reports
+			allure serve reports
+		  '''
         }
       }
     }
