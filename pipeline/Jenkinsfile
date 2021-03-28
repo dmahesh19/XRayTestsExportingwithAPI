@@ -1,46 +1,46 @@
 pipeline {
   agent any
   stages {
-  stage('Install Requirements') {
-      steps {
+      stage('Install Requirements') {
+          steps {
+            script {
+              echo 'Stage 1'
+              pip install behave
+              pip install allure-behave
+            }
+          }
+      }
+      stage('Import TCs') {
+          steps {
+            script {
+              echo 'Stage 2'
+              python Utilities/testcasesimport.py
+            }
+          }
+        }
+      }
+      stage('Run TCs') {
+          steps {
+            script {
+              echo 'Stage 2'
+              bat '''
+                behave -f allure_behave.formatter:AllureFormatter -o reports
+                allure serve reports
+              '''
+            }
+          }
+        }
+      }
+      stage('Generate Reports'){
         script {
-          echo 'Stage 1'
-          pip install behave
-          pip install allure-behave
+                  allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'target/allure-results']]
+                  ])
         }
       }
   }
-  stage('Import TCs') {
-      steps {
-        script {
-          echo 'Stage 2'
-          python Utilities/testcasesimport.py
-        }
-      }
-    }
-  }
-  stage('Run TCs') {
-      steps {
-        script {
-          echo 'Stage 2'
-		  bat '''
-			behave -f allure_behave.formatter:AllureFormatter -o reports
-			allure serve reports
-		  '''
-        }
-      }
-    }
-  }
-  stage('Generate Reports'){
-    script {
-              allure([
-                includeProperties: false,
-                jdk: '',
-                properties: [],
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'target/allure-results']]
-              ])
-    }
-  }
-}
 }
