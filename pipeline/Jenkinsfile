@@ -17,7 +17,6 @@ pipeline {
               python Utilities/testcasesimport.py
             }
           }
-        }
       }
       stage('Run TCs') {
           steps {
@@ -29,7 +28,6 @@ pipeline {
               '''
             }
           }
-        }
       }
       stage('Generate Reports'){
         script {
