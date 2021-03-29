@@ -10,7 +10,7 @@ tokenUrl = "https://xray.cloud.xpand-it.com/api/v2/authenticate"
 
 featureUrl = "https://xray.cloud.xpand-it.com/api/v2/export/cucumber?keys=GF-11"
 
-file = open("../creds.json",'r')
+file = open("..\\creds.json",'r')
 json_input = file.read()
 #req_json = json.loads(json_input)
 

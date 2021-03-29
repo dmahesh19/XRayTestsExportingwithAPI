@@ -16,7 +16,10 @@ pipeline {
           steps {
             script {
               echo 'Stage 2'
-              bat 'python Utilities/testcasesimport.py'
+              bat '''
+				cd Utilities
+				python testcasesimport.py
+			  '''
             }
           }
       }
