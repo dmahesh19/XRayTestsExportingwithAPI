@@ -1,5 +1,6 @@
 import requests
 import json
+import zipfile
 from zipfile import ZipFile
 import shutil
 import os
@@ -28,15 +29,19 @@ token = "Bearer "+token
 
 featureHeaderList={"Authorization":token}
 
-reponse1 = requests.get(featureUrl,headers=featureHeaderList)
+reponse1 = requests.get(featureUrl,headers=featureHeaderList,stream=True)
 
 print(reponse1.content)
 
-with open("..\downloads\d.zip","wb") as f:
-    f.write(reponse1.content)
+z = zipfile.ZipFile(reponse1.content)
+z.extractall("..\\features")
 
-with ZipFile("..\downloads\d.zip",'r') as zip:
-    zip.extractall("..\features")
-
+###
+#with open("..\downloads\d.zip","wb") as f:
+#    f.write(reponse1.content)
+#
+#with ZipFile("..\downloads\d.zip",'r') as zip:
+#    zip.extractall("..\features")
+###
 
 
