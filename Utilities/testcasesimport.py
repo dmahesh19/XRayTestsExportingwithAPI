@@ -33,15 +33,17 @@ reponse1 = requests.get(featureUrl,headers=featureHeaderList,stream=True)
 
 print(reponse1.content)
 
-z = zipfile.ZipFile(reponse1.content)
-z.extractall("..\\features")
+dir
 
-###
-#with open("..\downloads\d.zip","wb") as f:
-#    f.write(reponse1.content)
-#
-#with ZipFile("..\downloads\d.zip",'r') as zip:
-#    zip.extractall("..\features")
-###
+cd ..
+
+dir
+
+with open("..\downloads\d.zip","wb") as f:
+    f.write(reponse1.content)
+
+with ZipFile("..\downloads\d.zip",'r') as zip:
+    zip.extractall("..\features")
+
 
 
