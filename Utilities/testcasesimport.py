@@ -33,16 +33,17 @@ reponse1 = requests.get(featureUrl,headers=featureHeaderList,stream=True)
 
 print(reponse1.content)
 
-dir
+filename = "downloads\d.zip"
 
-cd ..
+dirname = os.path.dirname(filename)
 
-dir
+if not os.path.exists(dirname):
+    os.makedirs(dirname)
 
-with open("..\downloads\d.zip","wb") as f:
+with open(filename,"wb") as f:
     f.write(reponse1.content)
 
-with ZipFile("..\downloads\d.zip",'r') as zip:
+with ZipFile(filename,'r') as zip:
     zip.extractall("..\features")
 
 
