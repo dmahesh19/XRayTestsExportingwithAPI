@@ -5,8 +5,10 @@ pipeline {
           steps {
             script {
               echo 'Stage 1'
-              pip install behave
-              pip install allure-behave
+              bat '''
+                pip install behave
+                pip install allure-behave
+              '''
             }
           }
       }
@@ -14,7 +16,7 @@ pipeline {
           steps {
             script {
               echo 'Stage 2'
-              python Utilities/testcasesimport.py
+              bat 'python Utilities/testcasesimport.py'
             }
           }
       }
