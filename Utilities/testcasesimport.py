@@ -42,7 +42,7 @@ zfilename = "..\\features"
 if not os.path.exists(ddirname):
     os.makedirs(ddirname)
 
-with open(dfilename,"wb") as f:d
+with open(dfilename,"wb") as f:
     f.write(reponse1.content)
 
 with ZipFile(dfilename,'r') as zip:
