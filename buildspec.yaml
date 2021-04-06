@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+    commands:
+      - pip3 install behave
+  build:
+    commands:
+      - behave --junit
+
+reports:
+  TC_reports:
+    files:
+      - '**/*'
+    base-directory: 'reports'
+    file-format: JUNITXML

@@ -1,4 +1,8 @@
-from behave import given, when, then, Step
+from behave import given, when, then
+from behave import __main__ as runner_with_options
+
+#if __name__ =='__main__':
+
 
 
 @given(u'I am logged In')
