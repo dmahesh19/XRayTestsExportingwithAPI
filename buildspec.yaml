@@ -8,7 +8,7 @@ phases:
       - pip3 install behave
   build:
     commands:
-      - behave --junit
+      - behave
 
 reports:
   TC_reports:
